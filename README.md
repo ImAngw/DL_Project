@@ -48,7 +48,7 @@ https://arxiv.org/pdf/2001.04451
 
 ## Experiments
 
-### Classifier
+### Train a Classifier
 In this experiment, a classifier was trained on MNIST/CIFAR-10. To replicate the training, run:
 ```bash
 python3 cls_train.py --config dl_proj/configs/cls_train.yaml
@@ -57,7 +57,7 @@ By default, MNIST is used, but if you want to work with CIFAR-10, modify `dl_pro
 **Cross Entropy Loss** is used during the training (more details in `dl_proj/utils/cls_train_utils.py`).
 
 
-### Generator
+### Train a Generator
 In this experiment, an autoregressive model was trained to generate images (MNIST). For this task, scaled images ($dim=12×12$) were used during training to make the process faster. To replicate the training, run:
 
 ```bash
