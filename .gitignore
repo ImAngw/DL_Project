@@ -1,0 +1,25 @@
+# ---- Python ----
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+
+# ---- Virtual environment ----
+.venv/
+env/
+venv/
+
+# ---- Datasets ----
+data/
+datasets/
+*.csv
+*.tsv
+*.json
+*.xlsx
+
+# ---- WandB ----
+wandb/
+
+# ---- Jupyter ----
+.ipynb_checkpoints/

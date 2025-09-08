@@ -1,0 +1,40 @@
+# Generals
+checkpoint_dir: 'dl_proj/checkpoints'
+device: 'mps'
+seed: 104
+causal_mask: true
+self_attn_mask: true
+
+# Training
+lr: 1e-4
+batch_size: 128
+num_epochs: 20
+require_early_stop: true
+early_stop_desc: false
+early_stopping_min_delta: 0.001
+early_stopping_patience: 20
+
+
+# Dataset
+labels: [0, 1, 2, 3, 4, 5]
+vocab_size: 128
+max_len: 144
+
+# Model
+embedding_dim: 256
+d_k: 64
+d_v: 64
+heads: 4
+expansion_factor: 1
+dropout: 0.1
+attn_dropout: 0.1
+depth: 1
+attn_type: 'lsh'   # full or lsh
+
+
+# LSH Model (useful only if attn_type = lsh)
+n_rounds: 4
+bucket_size: 24
+
+experiment_name: 'mnist-gen-lsh-r4-144'
+save_on_wb: false

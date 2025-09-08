@@ -1,0 +1,47 @@
+
+# Generals
+checkpoint_dir: 'dl_proj/checkpoints'
+device: 'mps'
+seed: 104
+require_early_stop: true
+early_stop_desc: true
+early_stopping_min_delta: 0.001
+early_stopping_patience: 20
+
+# Training configs
+batch_size: 128
+num_epochs: 20
+lr: 1e-5
+
+# Dataset configs
+vocab_size: 256
+max_len: 784
+
+# Model configs
+embedding_dim: 128
+heads: 4
+d_k: 32
+d_v: 32
+expansion_factor: 1
+dropout: 0.1
+attn_dropout: 0.1
+causal_mask: false
+self_attn_mask: false
+depth: 1
+
+# Attention type (full or lsh)
+attn_type: 'lsh'
+
+# Reformer Model Configs (useful only for lsh models)
+bucket_size: 28
+n_rounds: 1
+#####################################################
+
+patch_on_channels: false      # If true, patches are created along the RGB channels.
+dataset: 'mnist'    # mnist, cifar10
+labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+patch_size: 2  # total dim:  patch_size * patch_size
+
+# Name
+experiment_name: 'mnist-cls-lsh-r1'
+save_on_wb: false   # save scores on Weights & Biases

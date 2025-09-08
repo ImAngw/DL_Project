@@ -1,0 +1,24 @@
+# Generals
+device: 'mps'
+directory: null,
+save_heatmaps: false
+save_graphics: false
+show_heatmaps: true
+show_graphics: true
+seed: 104
+
+# Sequence configs
+vocab_size: 64
+length: 32
+
+
+bucket_sizes: [4]       # sizes you want to study
+n_rounds: [1, 2, 4, 8]  # n rounds you want to study
+
+# Model configs
+embed_dim: 256
+heads: 4
+dk: 64
+dv: 64
+causal_mask: true
+b_size: 8

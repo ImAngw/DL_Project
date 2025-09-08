@@ -1,0 +1,28 @@
+checkpoint_dir: 'dl_proj/checkpoints'
+device: 'mps'
+seed: 104
+
+# Training configs
+batch_size: 128
+
+# Synthetic Dataset configs
+test_samples: 1024
+vocab_size: 128
+max_len: 196
+
+# Model configs
+embedding_dim: 128
+heads: 4
+d_k: 32
+d_v: 32
+expansion_factor: 1
+causal_mask: true
+self_attn_mask: true
+depth: 1
+
+# Reformer Model Configs (useful only for lsh models)
+bucket_size: 28
+#####################################################
+
+# Names
+experiment_name: 'model-comparison'
