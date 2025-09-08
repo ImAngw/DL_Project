@@ -39,7 +39,59 @@ https://arxiv.org/pdf/2001.04451
 <details>
   <summary>📂 my_transformers/</summary>  
   
-  - `layers.py` module with the custom train function
+  - `layers.py`
+  - `modules.py`
+  - `local_sensitive_hashing.py`
+  - `rev_layers.py`
+  - `sublayers.py`
 </details>
+
+## Experiments
+
+### Classifier
+In this experiment, a classifier was trained on MNIST/CIFAR-10. To replicate the training, run:
+```bash
+python3 cls_train.py --config dl_proj/configs/cls_train.yaml
+```
+By default, MNIST is used, but if you want to work with CIFAR-10, modify `dl_proj/configs/cls_train.yaml`.  
+**Cross Entropy Loss** is used during the training (more details in `dl_proj/utils/cls_train_utils.py`).
+
+
+### Generator
+In this experiment, an autoregressive model was trained to generate images (MNIST). For this task, scaled images ($dim=12×12$) were used during training to make the process faster. To replicate the training, run:
+
+```bash
+python3  generation_train.py --config dl_proj/configs/gen_train.yaml
+```
+If you want to change image dimensions modify `max_len` in `dl_proj/configs/cls_train.yaml`.  
+**Focal Loss** is used in the training; **BPD Loss** is used in validation (more details in `dl_proj/utils/generation_train_utils.py`).  
+You can also generate images using one of the trained models that you can find in `dl_proj/checkpoints/`. You can choose from:
+* mnist-gen-full: model with full attention
+* mnist-gen-lsh-r1: lsh attention, one hash round
+* mnist-gen-lsh-r2: lsh attention, two hash round
+* mnist-gen-lsh-r4: lsh attention, four hash round
+
+To genarate images, run:
+```bash
+python3  mnist_generator.py --config dl_proj/configs/gen_train.yaml
+```
+
+Performance study:
+```bash
+python3 performance_studies.py --config dl_proj/configs/perf_study.yaml
+```
+
+Synthetic models comparison:
+```bash
+python3 synth_models_comparison.py --config dl_proj/configs/synth_comparison.yaml
+```
+
+Synthetic train:
+```bash
+python3 synth_train.py --config dl_proj/configs/synth_train.yaml
+```
+
+
+
 
 
