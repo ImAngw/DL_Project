@@ -107,6 +107,6 @@ python3 synth_models_comparison.py --config dl_proj/configs/synth_comparison.yam
 ```
 The following models are involved:
 * synth-gen-full: full attention
-* synth-gen-lsh-r1': lsh attention, one hash round
-* synth-gen-lsh-r2': lsh attention, two hash rounds
-* synth-gen-lsh-r4': lsh attention, four hash rounds
+* synth-gen-lsh-r1: lsh attention, one hash round
+* synth-gen-lsh-r2: lsh attention, two hash rounds
+* synth-gen-lsh-r4: lsh attention, four hash rounds
