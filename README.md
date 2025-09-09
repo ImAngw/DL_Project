@@ -46,6 +46,8 @@ https://arxiv.org/pdf/2001.04451
   - `sublayers.py`
 </details>
 
+**NOTE:** Every training run makes use of custom functions available in `my_custom_ai/`. For further details, refer to `my_custom_ai/instructions.txt`.
+
 ## Experiments
 To install run:
 ```bash
