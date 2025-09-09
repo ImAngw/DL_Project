@@ -12,7 +12,7 @@ vocab_size: 64
 length: 32
 
 
-bucket_sizes: [4]       # sizes you want to study
+bucket_sizes: [4, 8, 16]       # sizes you want to study
 n_rounds: [1, 2, 4, 8]  # n rounds you want to study
 
 # Model configs
