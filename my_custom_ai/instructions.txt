@@ -1,0 +1,58 @@
+*** my_custom_ai ***
+Custom environment with all the functions you need to make a training on a given model.
+
+To use you MUST import:
+    - class Configs from misc_utils.
+        It is useful to define all the configurations of your training. It requires:
+            experiment_name                 ----> name of your experiment
+            checkpoint_dir                  ----> directory in which the best model (from training) will be saved
+            batch_size=32                   ----> batch size
+            num_epochs=50                   ----> number of epochs
+            lr=1e-4                         ----> learning rate
+            logger_type='wandb'             ----> type of logger you want to use to save scores. Allowed logger: ['wandb']
+            logger_init=None                ----> logger initialization info. See your specific logger type initialization in save_score_utils
+            num_workers=2                   ----> number of workers
+            seed=42                         ----> seed for reproducibility
+            device='cpu'                    ----> device on which the model will run
+            require_early_stop=False        ----> set True if you want early stop, else False
+            early_stop_desc=True            ----> if True, model will be saved when score on val_set increases, if False when score decreases
+            early_stopping_patience=10      ----> patience of the EarlyStopping class
+            early_stopping_min_delta=0.002  ----> minimum increase in performance you want. Default: 0.002
+
+        You should build your own class starting from that.
+
+    - class FunctionContainer from train_utils.
+        It is an abstract base class that requires three main functions in order to work:
+            1) Func: batch_extractor.
+                It must take a batch (in whatever form) and must return the batch and the y (labels or whatever)
+                in a form useful for loss_function. Expected return: elaborated_batch, y.
+                NOTE: If the model requires multiple inputs, it must return {batch_name: elaborated_batch, ...}, y
+
+            2) Func: loss_function.
+                It takes the model output (on a batch) and y and returns the scalar loss.
+
+            3) Func: performance_score.
+                It takes the model output (on a batch) and y and returns the performance (accuracy or whatever).
+                NOTE: if test_type='classification' => the function must return: num_tot_example, num_correct_pred
+
+            4) Func: test_performance
+
+    - class CustomTraining from train.
+        CustomTraining is a class designed to manage and facilitate training processes for machine learning models. It
+        handles training loops, validation, performance monitoring, and supports additional functionality like optimization
+        scheduling and early stopping. It requires:
+            configs: Configs                                ---->  configs of your experiment
+            model                                           ---->  model you want to train
+            optimizer                                       ---->  optimizer initialization
+            train_loader: Dataloader                        ---->  train set (required if you want to use CustomTrain.train())
+            val_loader: Dataloader                          ---->  validation set (required if you want to use CustomTrain.train())
+            test_loader: Dataloader                         ---->  test set (not required in CustomTrain.train())
+            function_container:FunctionContainer            ---->  custom functions of your training
+            scheduler=None                                  ---->  scheduler of the training
+            scheduler_metric=None                           ---->  metrics of the scheduler. They must be organized in a dictionary form
+            step_scheduler_each_batch=True                  ---->  if True, scheduler will be called at each batch, else at each epoch
+            eval_on_validation=False                        ---->  if True, evaluate the model on validation loader
+            verbose=False                                   ---->  if True, it will print additional info
+            args_l=(), kwargs_l=None                        ---->  additional arguments for loss_function  (of function_container)
+            args_b=(), kwargs_b=None                        ---->  additional arguments for batch_extractor  (of function_container)
+            args_a=(), kwargs_a=None                        ---->  additional arguments for performance_score  (of function_container)
