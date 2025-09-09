@@ -47,6 +47,10 @@ https://arxiv.org/pdf/2001.04451
 </details>
 
 ## Experiments
+To install run:
+```bash
+pip install -r requirements.txt
+```
 
 ### Train a Classifier
 In this experiment, a classifier was trained on MNIST/CIFAR-10. To replicate the training, run:
