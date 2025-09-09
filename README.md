@@ -72,7 +72,7 @@ python3  generation_train.py --config dl_proj/configs/gen_train.yaml
 If you want to change image dimensions modify `max_len` in `dl_proj/configs/gen_train.yaml`.  
 **Focal Loss** is used in the training; **BPD Loss** is used in validation (more details in `dl_proj/utils/generation_train_utils.py`).  
 You can also generate images using one of the trained models that you can find in `dl_proj/checkpoints/`. You can choose from:
-* mnist-gen-full: model with full attention
+* mnist-gen-full-144: model with full attention
 * mnist-gen-lsh-r1-144: lsh attention, one hash round
 * mnist-gen-lsh-r2-144: lsh attention, two hash rounds
 * mnist-gen-lsh-r4-144: lsh attention, four hash rounds
@@ -81,7 +81,7 @@ To genarate images, run:
 ```bash
 python3  mnist_generator.py --config dl_proj/configs/gen_train.yaml
 ```
-By default, mnist-gen-lsh-r4-144 is used. To use a different model, change `experiment_name` in `dl_proj/configs/gen_train.yaml`.
+By default, mnist-gen-full-144 is used. To use a different model, change `experiment_name` and `attn_type` in `dl_proj/configs/gen_train.yaml`.
 
 
 ### Performance study
