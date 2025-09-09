@@ -16,7 +16,7 @@ early_stopping_patience: 20
 
 
 # Dataset
-labels: [0, 1, 2, 3, 4, 5]
+labels: [0, 1, 2, 3, 4]
 vocab_size: 128
 max_len: 144
 
@@ -29,12 +29,12 @@ expansion_factor: 1
 dropout: 0.1
 attn_dropout: 0.1
 depth: 1
-attn_type: 'lsh'   # full or lsh
+attn_type: 'full'   # full or lsh
 
 
 # LSH Model (useful only if attn_type = lsh)
 n_rounds: 4
 bucket_size: 24
 
-experiment_name: 'mnist-gen-lsh-r4-144'
+experiment_name: 'mnist-gen-full-144'
 save_on_wb: false
